@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Controle de Aprovação por Pose</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo">TM</div>
+        <h2>Controle de Aprovação</h2>
+        <p class="subtitle">Teachable Machine</p>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Alunos</a></li>
+          <li><a href="#">Detecção</a></li>
+        </ul>
+      </nav>
+
+      <div class="side-footer">Feito por Caio Renato</div>
+    </aside>
+
+    <div class="main-content">
+      <header>
+        <button id="toggleSidebar" class="toggle-btn">☰</button>
+        <h1>Controle de Aprovação — Pose Model</h1>
+      </header>
+
+      <main>
+        <section class="left">
+          <div class="card">
+            <h3>Registrar aluno</h3>
+            <label>Nome</label>
+            <input id="inputName" type="text" placeholder="Ex: Maria Souza" />
+            <label>Matrícula</label>
+            <input id="inputMat" type="text" placeholder="Ex: 2025001" />
+            <div class="row">
+              <button id="btnAdd">Adicionar</button>
+              <button id="btnClear" class="ghost">Limpar tudo</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Alunos</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Matrícula</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="studentsBody"></tbody>
+            </table>
+            <button id="btnExportCSV" class="ghost full">Exportar CSV</button>
+          </div>
+        </section>
+
+        <section class="right">
+          <div class="card webcam-area">
+            <h3>Detecção por Pose</h3>
+            <canvas id="canvas" width="320" height="320"></canvas>
+            <div class="controls">
+              <button id="btnStart">Iniciar</button>
+              <button id="btnStop" class="ghost" disabled>Parar</button>
+              <button id="btnSimulate" class="ghost">Simular</button>
+            </div>
+            <div class="result">
+              <h2 id="finalStatus" class="status unknown">Aguardando...</h2>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bottom-footer">
+        Atividade de IA — criado por Caio Renato
+      </footer>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
